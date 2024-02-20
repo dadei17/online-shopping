@@ -10,8 +10,6 @@ import com.shop.online.demo.repository.OrderProductRepository;
 import com.shop.online.demo.repository.OrderRepository;
 import com.shop.online.demo.repository.ProductRepository;
 import com.shop.online.demo.service.OrderService;
-import com.shop.online.demo.service.ProductService;
-import com.shop.online.demo.service.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,12 +36,6 @@ class OrderServiceImplTest {
 
     @Autowired
     OrderProductRepository orderProductRepository;
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    ProductService productService;
 
     @Autowired
     OrderService orderService;
