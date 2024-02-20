@@ -23,7 +23,8 @@ public class Order {
 
     @Id
     @JsonProperty("id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_generator")
+    @SequenceGenerator(name = "order_id_generator", sequenceName = "ORDER_ID_SEQ", allocationSize = 1)
     Long Id;
 
     @JsonProperty("clientId")

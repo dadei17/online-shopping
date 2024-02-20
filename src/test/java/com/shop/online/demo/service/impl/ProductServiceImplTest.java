@@ -3,10 +3,12 @@ package com.shop.online.demo.service.impl;
 import com.shop.online.demo.model.Product;
 import com.shop.online.demo.repository.ProductRepository;
 import com.shop.online.demo.service.ProductService;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.Optional;
 import java.util.Set;
@@ -14,14 +16,32 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class ProductServiceImplTest {
+public class ProductServiceImplTest {
 
     @Autowired
     ProductService productService;
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    private void resetSequence() {
+        jdbcTemplate.execute("ALTER SEQUENCE PRODUCT_ID_SEQ RESTART WITH 1");
+    }
+
+    @BeforeEach
+    public void setUp() {
+        productRepository.deleteAllInBatch();
+        resetSequence();
+    }
+
+    @AfterEach
+    public void tearDown() {
+        productRepository.deleteAllInBatch();
+        resetSequence();
+    }
 
     @Test
     void findAll() {

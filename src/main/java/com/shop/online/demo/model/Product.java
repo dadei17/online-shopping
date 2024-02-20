@@ -18,7 +18,8 @@ import java.util.List;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_id_generator")
+    @SequenceGenerator(name = "product_id_generator", sequenceName = "PRODUCT_ID_SEQ", allocationSize = 1)
     Long id;
 
     String name;
