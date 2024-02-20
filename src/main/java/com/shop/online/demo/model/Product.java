@@ -36,6 +36,6 @@ public class Product {
     }
 
     @JsonIgnore
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private List<OrderProduct> orderProducts;
 }

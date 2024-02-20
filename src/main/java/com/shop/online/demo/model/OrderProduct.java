@@ -18,7 +18,8 @@ public class OrderProduct {
 
     @Id
     @JsonIgnore
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_product_id_generator")
+    @SequenceGenerator(name = "order_product_id_generator", sequenceName = "ORDER_PRODUCT_ID_SEQ", allocationSize = 1)
     private Long id;
 
     private Long quantity;
