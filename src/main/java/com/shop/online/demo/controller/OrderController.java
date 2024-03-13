@@ -1,10 +1,11 @@
 package com.shop.online.demo.controller;
 
+import com.shop.online.demo.aspect.Loggable;
 import com.shop.online.demo.model.Order;
 import com.shop.online.demo.model.dto.OrderDto;
 import com.shop.online.demo.service.OrderService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -15,16 +16,18 @@ import java.util.List;
 
 @Validated
 @RestController
-@AllArgsConstructor
-@RequestMapping("/rest/service/orders")
+@RequiredArgsConstructor
+@RequestMapping("/rest/service/v1/orders")
 public class OrderController {
     private final OrderService orderService;
 
+    @Loggable
     @GetMapping()
     public ResponseEntity<List<Order>> getOrders() {
         return ResponseEntity.ok(orderService.findAll());
     }
 
+    @Loggable
     @GetMapping("{id}")
     public ResponseEntity<Order> getOrder(@PathVariable Long id) {
 

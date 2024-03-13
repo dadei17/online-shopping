@@ -1,6 +1,6 @@
 package com.shop.online.demo.service.impl;
 
-import com.shop.online.demo.config.RestSecurityConfiguration.RoleType;
+import com.shop.online.demo.config.RestSecurityConfig.RoleType;
 import com.shop.online.demo.model.User;
 import com.shop.online.demo.repository.UserRepository;
 import com.shop.online.demo.service.UserService;

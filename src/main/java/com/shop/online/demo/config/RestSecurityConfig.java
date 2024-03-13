@@ -16,7 +16,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class RestSecurityConfiguration {
+public class RestSecurityConfig {
     private final BasicAuthenticationProvider basicAuthenticationProvider;
 
     public enum RoleType {PRODUCT, ORDER}

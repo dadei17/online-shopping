@@ -4,7 +4,7 @@ import com.shop.online.demo.model.Product;
 import com.shop.online.demo.model.dto.ProductDto;
 import com.shop.online.demo.service.ProductService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -15,8 +15,8 @@ import java.util.List;
 
 @Validated
 @RestController
-@AllArgsConstructor
-@RequestMapping("/rest/service/products")
+@RequiredArgsConstructor
+@RequestMapping("/rest/service/v1/products")
 public class ProductController {
     private final ProductService productService;
 
