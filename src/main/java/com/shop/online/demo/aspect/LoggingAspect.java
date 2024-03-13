@@ -26,15 +26,15 @@ public class LoggingAspect {
         long totalTime = System.currentTimeMillis() - startTime;
 
         StringBuilder message = new StringBuilder("Method: ");
-        message.append(joinPoint.getSignature().getName())
-                .append(", totalTime: ").append(totalTime).append("ms");
+        message.append(joinPoint.getSignature().getName());
+
         Object[] args = joinPoint.getArgs();
         if (args != null && args.length > 0) {
-            message.append(" args[")
+            message.append("(")
                     .append(StringUtils.join(args, ","))
-                    .append("]");
+                    .append(")");
         }
-        message.append(", returning: ");
+        message.append(", totalTime: ").append(totalTime).append("ms").append(", returning: ");
         if (returnValue instanceof Collection) {
             message.append(((Collection) returnValue).size()).append(" instance(s)");
         } else {
