@@ -30,9 +30,7 @@ public class LoggingAspect {
 
         Object[] args = joinPoint.getArgs();
         if (args != null && args.length > 0) {
-            message.append("(")
-                    .append(StringUtils.join(args, ","))
-                    .append(")");
+            message.append("(").append(StringUtils.join(args, ",")).append(")");
         }
         message.append(", totalTime: ").append(totalTime).append("ms").append(", returning: ");
         if (returnValue instanceof Collection) {
