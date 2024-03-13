@@ -9,19 +9,23 @@ import org.springframework.http.HttpStatus;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.shop.online.demo.config.ApplicationConfig.DATE_TIME_FORMAT;
+
 @Getter
 @Setter
 public class ApiError {
-
     private HttpStatus status;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_TIME_FORMAT)
     private LocalDateTime timestamp;
+
     private String message;
+
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<ApiSubError> subErrors;
 
     public ApiError(HttpStatus status, String message) {
-        timestamp = LocalDateTime.now();
+        this.timestamp = LocalDateTime.now();
         this.status = status;
         this.message = message;
     }
