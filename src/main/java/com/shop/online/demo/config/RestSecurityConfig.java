@@ -30,8 +30,8 @@ public class RestSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/rest/service/products/**").hasRole(RoleType.PRODUCT.name())
-                        .requestMatchers("/rest/service/orders/**").hasRole(RoleType.ORDER.name())
+                        .requestMatchers("/rest/service/v1/products/**").hasRole(RoleType.PRODUCT.name())
+                        .requestMatchers("/rest/service/v1/orders/**").hasRole(RoleType.ORDER.name())
                         .anyRequest().authenticated())
                 .httpBasic(withDefaults())
                 .build();
